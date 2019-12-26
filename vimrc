@@ -1,4 +1,6 @@
-" basic setting
+"--------------------------------------
+" basic settings
+"-------------------------------------- 
 set nu					" show line number
 syntax on				" code highlight
 colorscheme molokai		" highlight theme molokai
@@ -23,6 +25,8 @@ set noswapfile          " do not build swap file
 set hlsearch			" highlight search result
 set incsearch			" input search string, jump to result intime
 set ignorecase			" ignore case
+" use <leader>f to search ignore case cursor word in all files and open quickfix
+nmap <leader>f :norm yiw<CR>:vimg /\c<C-R>"/j **/*.* \| copen
 
 " folding setting
 set foldenable			" Enables folding.
@@ -35,8 +39,9 @@ set fileencodings=utf-8,gb2312,gbk,gb18030
 " format
 set fileformats=unix,dos
 
-
-" plugin
+"----------------------------------------
+" plugin settings
+"----------------------------------------
 filetype plugin on      " different filetype use different plugin setting
 " NERDTree
 set rtp+=~/.vim/bundle/nerdtree
@@ -99,3 +104,7 @@ set rtp+=~/.vim/bundle/vim-preview
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>        
 " set P to close preview windows
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+
+" vim-trailing-whitespace
+set rtp+=~/.vim/bundle/vim-trailing-whitespace
+autocmd BufWritePre * FixWhitespace         " trailing space on save
