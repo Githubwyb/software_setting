@@ -1,0 +1,22 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 18,
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "editor.formatOnPaste": true,
+    "prettier.tabWidth": 4,
+    "files.autoGuessEncoding": true,
+    "files.trimTrailingWhitespace": true,
+    "debug.console.fontSize": 16,
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4}",
+    "window.restoreWindows": "none",
+    "search.showLineNumbers": true,
+    "terminal.integrated.rightClickBehavior": "default",
+    "code-runner.runInTerminal": true
+}
