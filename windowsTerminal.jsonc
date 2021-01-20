@@ -29,7 +29,10 @@
         {
             // Put settings here that you want to apply to all profiles.
             "cursorShape": "filledBox",
-            "startingDirectory": "."
+            "startingDirectory": ".",
+            "backgroundImage": "C:\\Users\\wangyubo\\Pictures\\壁纸\\71.jpg",
+            "backgroundImageOpacity": 0.2,
+            "backgroundImageStretchMode": "fill"
         },
         "list":
         [
