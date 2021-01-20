@@ -49,6 +49,21 @@ hi Pmenu ctermbg=Yellow guibg=lightblue
 " set ctrl + n to create new file or tab
 nmap <C-n> :tabnew<cr>
 
+" buffers
+" set buffers change keymap
+nmap <leader>1 :b1<cr>
+nmap <leader>2 :b2<cr>
+nmap <leader>3 :b3<cr>
+nmap <leader>4 :b4<cr>
+nmap <leader>5 :b5<cr>
+nmap <leader>6 :b6<cr>
+nmap <leader>7 :b7<cr>
+nmap <leader>8 :b8<cr>
+nmap <leader>9 :b9<cr>
+nmap <leader>0 :b0<cr>
+nmap <leader>- :bp<cr>
+nmap <leader>= :bn<cr>
+
 " plugin
 filetype plugin on      " different filetype use different plugin setting
 " NERDTree
@@ -163,17 +178,19 @@ set rtp+=~/.vim/bundle/DoxygenToolkit.vim
 " vim-airline
 set rtp+=~/.vim/bundle/vim-airline
 set rtp+=~/.vim/bundle/vim-airline-themes
-" show tab line
-let g:airline#extensions#tabline#enabled = 1
 " set some flags support all situations
 let g:airline_left_sep = '|>'
 let g:airline_left_alt_sep = '>'
 let g:airline_right_sep = '<|'
 let g:airline_right_alt_sep = '<'
-" disable count whitespace
-let g:airline#extensions#whitespace#enabled = 0
 " set airline theme
 let g:airline_theme='badwolf'
+" disable count whitespace
+let g:airline#extensions#whitespace#enabled = 0
+" show tab line
+let g:airline#extensions#tabline#enabled = 1
+" show buffers num
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ack.vim
 set rtp+=~/.vim/bundle/ack.vim
