@@ -1,7 +1,7 @@
 " basic setting
 set nu					" show line number
 syntax on				" code highlight
-colorscheme dracula		" highlight theme dracula
+colorscheme desert		" highlight theme dracula
 set tabstop=4           " think 4 space to 1 tab, think '\t' to 4 space
 set softtabstop=4       " tab input to 4 space width
 set shiftwidth=4        " change line width is 4 space
@@ -14,12 +14,13 @@ filetype indent on		" different filetype use differnt indent
 set laststatus=2        " always show file status bar
 set cmdheight=2         " cmd line height
 " statusline format
-set statusline=%w%n:%f%m\ %r%=Ln:%l/%L,Col:%c%V\ \ %{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"\ BOM\":\"\")}\ \ %{&ff}\ \ %Y\ [%P]
+" set statusline=%w%n:%f%m\ %r\ %{fugitive#statusline()}%=Ln:%l/%L,Col:%c%V\ \ %{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"\ BOM\":\"\")}\ \ %{&ff}\ \ %Y\ [%P]
 set showcmd             " show input cmd on the right bottom
 set autoread            " auto read file when it was changed by other process
 set autowriteall        " auto save file when vim wants to jump to other file
 set noswapfile          " not build the swap file
 set backspace=indent,eol,start  " backspace mode
+" set showtabline=2       " always show tab line
 
 " search setting
 set hlsearch			" highlight search result
@@ -38,6 +39,9 @@ set fileencodings=utf-8,gb2312,gbk,gb18030
 " format
 set fileformats=unix,dos
 
+" color
+set t_Co=256
+
 " complete highlight color
 hi Pmenu ctermbg=Yellow guibg=lightblue
 
@@ -53,17 +57,11 @@ set rtp+=~/.vim/bundle/nerdtree
 map <F10> :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1      " show hidden files
 
-" taglist
-set rtp+=~/.vim/bundle/taglist.vim
+" tagbar
+set rtp+=~/.vim/bundle/tagbar
 " set F9 to show or hide tlist
-map <F9> :TlistToggle<CR>
-let Tlist_Exit_OnlyWindow=1     " if tlist is the last window, then exit vim
-let Tlist_Use_Right_Window=1    " show tlist window on the right
-let Tlist_Show_One_File=1       " show one file taglist
+map <F9> :TagbarToggle<CR>
 set tags+=~/.vim/systags
-
-" echofunc
-" set rtp+=~/.vim/bundle/echofunc
 
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
@@ -130,6 +128,9 @@ let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']     
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--c++-kinds=+px', '--c-kinds=+px']    " ctags extra args
 let g:gutentags_cache_dir = expand('~/.cache/tags')                             " put tags out of project
 
+nmap <leader>d :norm yiw<CR>:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
+nmap <leader>r :norm yiw<CR>:GscopeFind s <C-R>"<cr> :copen<cr>j
+
 " gutentags_plus
 set rtp+=~/.vim/bundle/gutentags_plus
 
@@ -155,3 +156,28 @@ command JsonFormat call JsonBeautify()
 command JsxFormat call JsxBeautify()
 command HtmlFormat call HtmlBeautify()
 command CSSFormat call CSSBeautify()
+
+" DoxygenToolkit
+set rtp+=~/.vim/bundle/DoxygenToolkit.vim
+
+" vim-airline
+set rtp+=~/.vim/bundle/vim-airline
+set rtp+=~/.vim/bundle/vim-airline-themes
+" show tab line
+let g:airline#extensions#tabline#enabled = 1
+" set some flags support all situations
+let g:airline_left_sep = '|>'
+let g:airline_left_alt_sep = '>'
+let g:airline_right_sep = '<|'
+let g:airline_right_alt_sep = '<'
+" disable count whitespace
+let g:airline#extensions#whitespace#enabled = 0
+" set airline theme
+let g:airline_theme='badwolf'
+
+" ack.vim
+set rtp+=~/.vim/bundle/ack.vim
+" highlight search word
+let g:ackhighlight = 1
+" set <leader>f to search word where cursor be
+nmap <leader>f :norm yiw<CR>:Ack! <C-R>"<space>
