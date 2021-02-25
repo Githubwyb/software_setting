@@ -11,7 +11,7 @@ set smartindent			" smart indent
 set ruler				" show cursor pos status
 set cursorline			" highlight cursor line
 filetype indent on		" different filetype use differnt indent
-set laststatus=2        " always show file status bar
+" set laststatus=2        " always show file status bar
 set cmdheight=2         " cmd line height
 " statusline format
 " set statusline=%w%n:%f%m\ %r\ %{fugitive#statusline()}%=Ln:%l/%L,Col:%c%V\ \ %{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"\ BOM\":\"\")}\ \ %{&ff}\ \ %Y\ [%P]
@@ -26,7 +26,7 @@ set backspace=indent,eol,start  " backspace mode
 set hlsearch			" highlight search result
 set incsearch			" input search string, jump to result intime
 set ignorecase			" ignore case
-nmap <leader>f :norm yiw<CR>:vimg /\c<C-R>"/j **/*.* \| copen
+" nmap <leader>f :norm yiw<CR>:vimg /\c<C-R>"/j **/*.* \| copen
 
 " folding setting
 set foldenable			" Enables folding.
@@ -43,7 +43,7 @@ set fileformats=unix,dos
 set t_Co=256
 
 " complete highlight color
-hi Pmenu ctermbg=Yellow guibg=lightblue
+" hi Pmenu ctermbg=Yellow guibg=lightblue
 
 " tab page
 " set ctrl + n to create new file or tab
@@ -60,7 +60,16 @@ nmap <leader>6 :b6<cr>
 nmap <leader>7 :b7<cr>
 nmap <leader>8 :b8<cr>
 nmap <leader>9 :b9<cr>
-nmap <leader>0 :b0<cr>
+nmap <leader>10 :b10<cr>
+nmap <leader>11 :b11<cr>
+nmap <leader>12 :b12<cr>
+nmap <leader>13 :b13<cr>
+nmap <leader>14 :b14<cr>
+nmap <leader>15 :b15<cr>
+nmap <leader>16 :b16<cr>
+nmap <leader>17 :b17<cr>
+nmap <leader>18 :b18<cr>
+nmap <leader>19 :b19<cr>
 nmap <leader>- :bp<cr>
 nmap <leader>= :bn<cr>
 
@@ -126,8 +135,8 @@ set rtp+=/opt/fzf
 set rtp+=~/.vim/bundle/fzf.vim
 " 'Ctrl + p' to find file and open in current tab
 map <c-p> :FZF<cr>
-" 'Ctrl + f' to find line
-map <c-f> :Lines<cr>
+" 'Ctrl + f' to find line in current buffer
+map <c-f> :BLines<cr>
 
 " gtags
 set rtp+=~/.vim/bundle/gtags
@@ -136,15 +145,16 @@ set cscopeprg='gtags-cscope'    " replace cscope with gtags-cscope
 
 " gutentags
 set rtp+=~/.vim/bundle/vim-gutentags
-let g:gutentags_auto_add_gtags_cscope=0                                         " disable gutentags auto add gtags_cscope, use plus plugin to do this
-let g:gutentags_define_advanced_commands = 1                                    " enable gutentags use advanced commands
-let g:gutentags_modules=['ctags', 'gtags_cscope']                               " enable gtags module
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']     " define project root dir/file name for gutentags
+let g:gutentags_auto_add_gtags_cscope=0                     " disable gutentags auto add gtags_cscope, use plus plugin to do this
+let g:gutentags_define_advanced_commands = 1                " enable gutentags use advanced commands
+let g:gutentags_modules=['ctags', 'gtags_cscope']           " enable gtags module
+let g:gutentags_project_root = ['.root']                    " define project root dir/file name for gutentags
+let g:gutentags_add_default_project_roots = 0               " won't add default roots, only use root dir/file user add
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--c++-kinds=+px', '--c-kinds=+px']    " ctags extra args
-let g:gutentags_cache_dir = expand('~/.cache/tags')                             " put tags out of project
+let g:gutentags_cache_dir = expand('~/.cache/tags')         " put tags out of project
 
-nmap <leader>d :norm yiw<CR>:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
-nmap <leader>r :norm yiw<CR>:GscopeFind s <C-R>"<cr> :copen<cr>j
+nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
+nmap <leader>r yiw:GscopeFind s <C-R>"<cr> :copen<cr>j
 
 " gutentags_plus
 set rtp+=~/.vim/bundle/gutentags_plus
@@ -197,4 +207,4 @@ set rtp+=~/.vim/bundle/ack.vim
 " highlight search word
 let g:ackhighlight = 1
 " set <leader>f to search word where cursor be
-nmap <leader>f :norm yiw<CR>:Ack! <C-R>"<space>
+nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
