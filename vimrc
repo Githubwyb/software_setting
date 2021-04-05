@@ -81,6 +81,9 @@ set rtp+=~/.vim/bundle/nerdtree
 map <F10> :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1      " show hidden files
 
+" nerdcommenter
+set rtp+=~/.vim/bundle/nerdcommenter
+
 " tagbar
 set rtp+=~/.vim/bundle/tagbar
 " set F9 to show or hide tlist
