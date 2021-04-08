@@ -89,6 +89,9 @@ autocmd VimEnter * NERDTree
 " point cursor at buffer window
 autocmd VimEnter * wincmd w
 
+" nerdcommenter
+set rtp+=~/.vim/bundle/nerdcommenter
+
 " tagbar
 set rtp+=~/.vim/bundle/tagbar
 " set tagbar width
