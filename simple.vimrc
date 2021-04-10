@@ -78,28 +78,6 @@ nmap <leader>= :bn<cr>
 
 " plugin
 filetype plugin on      " different filetype use different plugin setting
-" NERDTree
-set rtp+=~/.vim/bundle/nerdtree
-" set F10 to show or hide NERDTree
-map <F10> :NERDTreeToggle<CR>
-" set nerdtree size
-let g:NERDTreeWinSize=25
-let g:NERDTreeShowHidden=1      " show hidden files
-" start neartree when vim start
-autocmd VimEnter * NERDTree
-" point cursor at buffer window
-autocmd VimEnter * wincmd w
-
-" tagbar
-set rtp+=~/.vim/bundle/tagbar
-" set tagbar width
-let g:tagbar_width=20
-" set F9 to show or hide tlist
-map <F9> :TagbarToggle<CR>
-" start Tagbar when vim start
-autocmd VimEnter * Tagbar
-
-set tags+=~/.vim/systags
 
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
@@ -143,9 +121,6 @@ set rtp+=~/.vim/bundle/vim-clang-format
 " auto-pair
 set rtp+=~/.vim/bundle/auto-pairs
 
-" nerd-git-plugin
-set rtp+=~/.vim/bundle/nerdtree-git-plugin
-
 " fzf-vim
 set rtp+=/opt/fzf
 set rtp+=~/.vim/bundle/fzf.vim
@@ -153,26 +128,6 @@ set rtp+=~/.vim/bundle/fzf.vim
 map <c-p> :FZF<cr>
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :BLines<cr>
-
-" gtags
-" set rtp+=~/.vim/bundle/gtags
-
-" gutentags
-set rtp+=~/.vim/bundle/vim-gutentags
-set cscopetag                                   " use cscope for tags command
-set cscopeprg='gtags-cscope'                    " replace cscope with gtags-cscope
-let g:gutentags_auto_add_gtags_cscope=0         " disable gutentags auto add gtags_cscope, use plus plugin to do this
-let g:gutentags_define_advanced_commands = 1    " enable gutentags use advanced commands
-let g:gutentags_modules=['gtags_cscope']        " enable gtags module
-let g:gutentags_project_root = ['.root']        " define project root dir/file name for gutentags
-let g:gutentags_add_default_project_roots = 0   " won't add default roots, only use root dir/file user add
-" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--c++-kinds=+px', '--c-kinds=+px']    " ctags extra args
-let g:gutentags_cache_dir = expand('~/.cache/tags')         " put tags out of project
-
-nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
-
-" gutentags_plus
-set rtp+=~/.vim/bundle/gutentags_plus
 
 " preview
 set rtp+=~/.vim/bundle/vim-preview
@@ -184,9 +139,6 @@ autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 " vim-trailing-whitespace
 set rtp+=~/.vim/bundle/vim-trailing-whitespace
 autocmd BufWritePre * FixWhitespace
-
-" vim-fugitive
-set rtp+=~/.vim/bundle/vim-fugitive
 
 " vim-jsbeautify
 set rtp+=~/.vim/bundle/vim-jsbeautify
