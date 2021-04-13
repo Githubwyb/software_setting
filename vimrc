@@ -86,9 +86,9 @@ map <F10> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=25
 let g:NERDTreeShowHidden=1      " show hidden files
 " start neartree when vim start
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " point cursor at buffer window
-autocmd VimEnter * wincmd w
+" autocmd VimEnter * wincmd w
 
 " tagbar
 set rtp+=~/.vim/bundle/tagbar
@@ -96,10 +96,10 @@ set rtp+=~/.vim/bundle/tagbar
 let g:tagbar_width=20
 " set F9 to show or hide tlist
 map <F9> :TagbarToggle<CR>
-" start Tagbar when vim start
-autocmd VimEnter * Tagbar
-
-set tags+=~/.vim/systags
+" start Tagbar when this file types open
+autocmd FileType c,cpp,go,js,php,py TagbarOpen
+" only add systags while c,cpp open
+autocmd FileType c,cpp set tags+=~/.vim/systags
 
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
@@ -154,11 +154,10 @@ map <c-p> :FZF<cr>
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :BLines<cr>
 
-" gtags
-" set rtp+=~/.vim/bundle/gtags
-
 " gutentags
 set rtp+=~/.vim/bundle/vim-gutentags
+let $GTAGSCONF="/usr/local/share/gtags/gtags.conf"
+let $GTAGSLABEL="pygments"
 set cscopetag                                   " use cscope for tags command
 set cscopeprg='gtags-cscope'                    " replace cscope with gtags-cscope
 let g:gutentags_auto_add_gtags_cscope=0         " disable gutentags auto add gtags_cscope, use plus plugin to do this
@@ -223,3 +222,7 @@ set rtp+=~/.vim/bundle/ack.vim
 let g:ackhighlight = 1
 " set <leader>f to search word where cursor be
 nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
+
+" vim-go
+set rtp+=~/.vim/bundle/vim-go
+autocmd FileType go nmap <leader>d :GoDef<cr>
