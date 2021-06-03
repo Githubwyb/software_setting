@@ -11,6 +11,7 @@ set autoindent          " auto indent
 set smartindent			" smart indent
 set ruler				" show cursor pos status
 set cursorline			" highlight cursor line
+set cursorcolumn		" highlight cursor line
 filetype indent on		" different filetype use differnt indent
 " set laststatus=2        " always show file status bar
 set cmdheight=2         " cmd line height
@@ -44,6 +45,7 @@ set fileformats=unix,dos
 
 " color
 set t_Co=256
+hi CursorLine   cterm=NONE ctermbg=240
 
 " complete highlight color
 " hi Pmenu ctermbg=Yellow guibg=lightblue
@@ -97,7 +99,7 @@ let g:tagbar_width=20
 " set F9 to show or hide tlist
 map <F9> :TagbarToggle<CR>
 " start Tagbar when this file types open
-autocmd FileType c,cpp,go,js,php,py TagbarOpen
+" autocmd FileType c,cpp,go,js,php,py TagbarOpen
 " only add systags while c,cpp open
 autocmd FileType c,cpp set tags+=~/.vim/systags
 
@@ -156,8 +158,8 @@ map <c-f> :BLines<cr>
 
 " gutentags
 set rtp+=~/.vim/bundle/vim-gutentags
-let $GTAGSCONF="/usr/local/share/gtags/gtags.conf"
-let $GTAGSLABEL="pygments"
+" let $GTAGSCONF="/usr/local/share/gtags/gtags.conf"
+" let $GTAGSLABEL="pygments"
 set cscopetag                                   " use cscope for tags command
 set cscopeprg='gtags-cscope'                    " replace cscope with gtags-cscope
 let g:gutentags_auto_add_gtags_cscope=0         " disable gutentags auto add gtags_cscope, use plus plugin to do this
@@ -226,3 +228,7 @@ nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
 " vim-go
 set rtp+=~/.vim/bundle/vim-go
 autocmd FileType go nmap <leader>d :GoDef<cr>
+
+" vim-intentline
+set rtp+=~/.vim/bundle/indentLine
+set list lcs=tab:\¦\ " space
