@@ -221,11 +221,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ack.vim
-set rtp+=~/.vim/bundle/ack.vim
+" set rtp+=~/.vim/bundle/ack.vim
 " highlight search word
-let g:ackhighlight = 1
+" let g:ackhighlight = 1
 " set <leader>f to search word where cursor be
-nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
+" nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
 
 " vim-go
 set rtp+=~/.vim/bundle/vim-go
@@ -241,3 +241,11 @@ set rtp+=~/.vim/bundle/ale
 
 " ctrlsf.vim
 set rtp+=~/.vim/bundle/ctrlsf.vim
+" search current file
+nmap <leader>f yiw:CtrlSF<space><C-R>"<space>%
+" search all file
+nmap <leader>F yiw:CtrlSF<space><C-R>"<space>**/*.*
+" search current file
+vmap <leader>f y:CtrlSF<space><C-R>"<space>%
+" search all file
+vmap <leader>F y:CtrlSF<space><C-R>"<space>**/*.*
