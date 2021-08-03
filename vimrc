@@ -1,4 +1,5 @@
 " basic setting
+set nocp                " vi not compatible mode
 set nu					" show line number
 syntax on				" code highlight
 colorscheme desert		" highlight theme dracula
@@ -10,6 +11,7 @@ set autoindent          " auto indent
 set smartindent			" smart indent
 set ruler				" show cursor pos status
 set cursorline			" highlight cursor line
+set cursorcolumn		" highlight cursor line
 filetype indent on		" different filetype use differnt indent
 " set laststatus=2        " always show file status bar
 set cmdheight=2         " cmd line height
@@ -26,7 +28,7 @@ set completeopt-=preview        " not open complete preview window
 " search setting
 set hlsearch			" highlight search result
 set incsearch			" input search string, jump to result intime
-set ignorecase			" ignore case
+" set ignorecase			" ignore case
 " nmap <leader>f :norm yiw<CR>:vimg /\c<C-R>"/j **/*.* \| copen
 
 " folding setting
@@ -43,6 +45,7 @@ set fileformats=unix,dos
 
 " color
 set t_Co=256
+hi CursorLine   cterm=NONE ctermbg=240
 
 " complete highlight color
 " hi Pmenu ctermbg=Yellow guibg=lightblue
@@ -85,12 +88,9 @@ map <F10> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=25
 let g:NERDTreeShowHidden=1      " show hidden files
 " start neartree when vim start
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " point cursor at buffer window
-autocmd VimEnter * wincmd w
-
-" nerdcommenter
-set rtp+=~/.vim/bundle/nerdcommenter
+" autocmd VimEnter * wincmd w
 
 " tagbar
 set rtp+=~/.vim/bundle/tagbar
@@ -98,10 +98,10 @@ set rtp+=~/.vim/bundle/tagbar
 let g:tagbar_width=20
 " set F9 to show or hide tlist
 map <F9> :TagbarToggle<CR>
-" start Tagbar when vim start
-autocmd VimEnter * Tagbar
-
-set tags+=~/.vim/systags
+" start Tagbar when this file types open
+" autocmd FileType c,cpp,go,js,php,py TagbarOpen
+" only add systags while c,cpp open
+" autocmd FileType c,cpp set tags+=~/.vim/systags
 
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
@@ -111,10 +111,12 @@ let g:echodoc#type='floating'
 " YouCompleteMe
 set rtp+=~/.vim/bundle/YouCompleteMe
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+" don't show load extra conf message
+let g:ycm_confirm_extra_conf=0
 " 跳转快捷键
 " nnoremap <c-k> :YcmCompleter GoToDeclaration<CR>|
 " nnoremap <c-h> :YcmCompleter GoToDefinition<CR>|
-" nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
+nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax=1
 " 开启 YCM 基于标签引擎
@@ -128,7 +130,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 " 禁用语法检查
 let g:ycm_show_diagnostics_ui=0
 " input two character to trigger complete
-let g:ycm_semantic_triggers={ 'c,cpp,python,java,go,erlang,perl,cs,lua,javascript': ['re!\w{2}'] }
+let g:ycm_min_num_of_chars_for_completion=2
 " don't show preview window when input complete
 " let g:ycm_add_preview_to_completeopt=0
 " close preview window when leave iw_nsertmode
@@ -156,11 +158,10 @@ map <c-p> :FZF<cr>
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :BLines<cr>
 
-" gtags
-" set rtp+=~/.vim/bundle/gtags
-
 " gutentags
 set rtp+=~/.vim/bundle/vim-gutentags
+" let $GTAGSCONF="/usr/local/share/gtags/gtags.conf"
+" let $GTAGSLABEL="pygments"
 set cscopetag                                   " use cscope for tags command
 set cscopeprg='gtags-cscope'                    " replace cscope with gtags-cscope
 let g:gutentags_auto_add_gtags_cscope=0         " disable gutentags auto add gtags_cscope, use plus plugin to do this
@@ -171,7 +172,7 @@ let g:gutentags_add_default_project_roots = 0   " won't add default roots, only 
 " let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--c++-kinds=+px', '--c-kinds=+px']    " ctags extra args
 let g:gutentags_cache_dir = expand('~/.cache/tags')         " put tags out of project
 
-nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
+" nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
 
 " gutentags_plus
 set rtp+=~/.vim/bundle/gutentags_plus
@@ -225,3 +226,18 @@ set rtp+=~/.vim/bundle/ack.vim
 let g:ackhighlight = 1
 " set <leader>f to search word where cursor be
 nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
+
+" vim-go
+set rtp+=~/.vim/bundle/vim-go
+autocmd FileType go nmap <c-]> :GoDef<cr>
+
+" vim-intentline
+set rtp+=~/.vim/bundle/indentLine
+let g:indentLine_color_term = 28
+set list lcs=tab:\¦\ " space
+
+" vim-ale
+set rtp+=~/.vim/bundle/ale
+
+" ctrlsf.vim
+set rtp+=~/.vim/bundle/ctrlsf.vim
