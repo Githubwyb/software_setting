@@ -1,18 +1,18 @@
 " basic setting
 set nocp                " vi not compatible mode
-set nu					" show line number
-syntax on				" code highlight
-colorscheme desert		" highlight theme dracula
+set nu                  " show line number
+syntax on               " code highlight
+colorscheme desert      " highlight theme dracula
 set tabstop=4           " think 4 space to 1 tab, think '\t' to 4 space
 set softtabstop=4       " tab input to 4 space width
 set shiftwidth=4        " change line width is 4 space
 set expandtab           " input tab, true 4 space
 set autoindent          " auto indent
-set smartindent			" smart indent
-set ruler				" show cursor pos status
-set cursorline			" highlight cursor line
-set cursorcolumn		" highlight cursor line
-filetype indent on		" different filetype use differnt indent
+set smartindent         " smart indent
+set ruler               " show cursor pos status
+set cursorline          " highlight cursor line
+set cursorcolumn        " highlight cursor line
+filetype indent on      " different filetype use differnt indent
 " set laststatus=2        " always show file status bar
 set cmdheight=2         " cmd line height
 " statusline format
@@ -26,15 +26,15 @@ set completeopt-=preview        " not open complete preview window
 " set showtabline=2             " always show tab line
 
 " search setting
-set hlsearch			" highlight search result
-set incsearch			" input search string, jump to result intime
-" set ignorecase			" ignore case
+set hlsearch            " highlight search result
+set incsearch           " input search string, jump to result intime
+" set ignorecase            " ignore case
 " nmap <leader>f :norm yiw<CR>:vimg /\c<C-R>"/j **/*.* \| copen
 
 " folding setting
-set foldenable			" Enables folding.
-set foldlevel=999		" close auto folding
-set foldmethod=indent	" indent folding mode
+set foldenable          " Enables folding.
+set foldlevel=999       " close auto folding
+set foldmethod=indent   " indent folding mode
 
 " encoding
 set fileencodings=utf-8,gb2312,gbk,gb18030
@@ -46,6 +46,7 @@ set fileformats=unix,dos
 " color
 set t_Co=256
 hi CursorLine   cterm=NONE ctermbg=240
+hi CursorColumn   cterm=NONE ctermbg=240
 
 " complete highlight color
 " hi Pmenu ctermbg=Yellow guibg=lightblue
@@ -83,7 +84,19 @@ filetype plugin on      " different filetype use different plugin setting
 " NERDTree
 set rtp+=~/.vim/bundle/nerdtree
 " set F10 to show or hide NERDTree
-map <F10> :NERDTreeToggle<CR>
+func TreeToggle()
+    if !filereadable(expand("%"))
+        NERDTreeToggle
+        return
+    endif
+    if g:NERDTree.IsOpen()
+        NERDTreeToggle
+    else
+        NERDTreeFind
+    endif
+endfunc
+map <F10> :call TreeToggle()<cr>
+
 " set nerdtree size
 let g:NERDTreeWinSize=25
 let g:NERDTreeShowHidden=1      " show hidden files
@@ -95,7 +108,7 @@ let g:NERDTreeShowHidden=1      " show hidden files
 " tagbar
 set rtp+=~/.vim/bundle/tagbar
 " set tagbar width
-let g:tagbar_width=20
+let g:tagbar_width=70
 " set F9 to show or hide tlist
 map <F9> :TagbarToggle<CR>
 " start Tagbar when this file types open
@@ -106,7 +119,7 @@ map <F9> :TagbarToggle<CR>
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
 let g:echodoc#enable_at_startup=1
-let g:echodoc#type='floating'
+let g:echodoc#type='popup'
 
 " YouCompleteMe
 set rtp+=~/.vim/bundle/YouCompleteMe
@@ -127,8 +140,8 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 " 注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings=1
-" 禁用语法检查
-let g:ycm_show_diagnostics_ui=0
+" 启用语法检查
+let g:ycm_show_diagnostics_ui=1
 " input two character to trigger complete
 let g:ycm_min_num_of_chars_for_completion=2
 " don't show preview window when input complete
@@ -221,31 +234,55 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ack.vim
-" set rtp+=~/.vim/bundle/ack.vim
+set rtp+=~/.vim/bundle/ack.vim
 " highlight search word
-" let g:ackhighlight = 1
-" set <leader>f to search word where cursor be
-" nmap <leader>f yiw:Ack!<space>-i<space><C-R>"
+let g:ackhighlight = 1
+" search current file
+nmap <leader>f yiw:Ack!<space>-i<space><C-R>"<space>%
+" search all file
+nmap <leader>F yiw:Ack!<space>-i<space><C-R>"<space>**/*.*
+" search current file
+vmap <leader>f y:Ack!<space>-i<space><C-R>"<space>%
+" search all file
+vmap <leader>F y:Ack!<space>-i<space><C-R>"<space>**/*.*
 
 " vim-go
 set rtp+=~/.vim/bundle/vim-go
-autocmd FileType go nmap <c-]> :GoDef<cr>
-
-" vim-intentline
-set rtp+=~/.vim/bundle/indentLine
-let g:indentLine_color_term = 28
-set list lcs=tab:\¦\ " space
+" autocmd FileType go nmap <c-]> :GoDef<cr>
 
 " vim-ale
 set rtp+=~/.vim/bundle/ale
+let g:ale_pattern_options = {
+\   '\.min\.js$': {
+\       'ale_enabled': 0,
+\   },
+\   '\.c[p]*$': {
+\       'ale_enabled': 0,
+\   },
+\   '\.h[p]*$': {
+\       'ale_enabled': 0,
+\   },
+\}
 
 " ctrlsf.vim
 set rtp+=~/.vim/bundle/ctrlsf.vim
 " search current file
-nmap <leader>f yiw:CtrlSF<space><C-R>"<space>%
+" nmap <leader>f yiw:CtrlSF<space><C-R>"<space>%
 " search all file
-nmap <leader>F yiw:CtrlSF<space><C-R>"<space>**/*.*
+" nmap <leader>F yiw:CtrlSF<space><C-R>"<space>**/*.*
 " search current file
-vmap <leader>f y:CtrlSF<space><C-R>"<space>%
+" vmap <leader>f y:CtrlSF<space><C-R>"<space>%
 " search all file
-vmap <leader>F y:CtrlSF<space><C-R>"<space>**/*.*
+" vmap <leader>F y:CtrlSF<space><C-R>"<space>**/*.*
+
+" nerdcommenter
+set rtp+=~/.vim/bundle/nerdcommenter
+let g:NERDSpaceDelims = 1
+nmap <leader><space> <leader>c<space>
+vmap <leader><space> <leader>c<space>
+
+" indentLine
+" set rtp+=~/.vim/bundle/indentLine
+" let g:indentLine_color_term = 28
+" let g:indentLine_conceallevel = 2
+" let g:indentLine_setConceal = 0
