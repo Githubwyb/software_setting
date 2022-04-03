@@ -1,0 +1,16 @@
+{
+    "expand_tabs_on_save": true,
+    "font_size": 17,
+    "tab_size": 4,
+    "theme": "Adaptive.sublime-theme",
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "save_on_focus_lost": true,
+    // Display file encoding in the status bar
+    "show_encoding": true,
+    // Display line endings in the status bar
+    "show_line_endings": true,
+    // Display the git status in the status bar, requires the show_git_status
+    // setting to be enabled
+    "show_git_status_in_status_bar": false,
+}

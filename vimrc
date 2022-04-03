@@ -256,12 +256,18 @@ let g:ale_pattern_options = {
 \   '\.min\.js$': {
 \       'ale_enabled': 0,
 \   },
+\   '\.json$': {
+\       'ale_enabled': 0,
+\   },
 \   '\.c[p]*$': {
 \       'ale_enabled': 0,
 \   },
 \   '\.h[p]*$': {
 \       'ale_enabled': 0,
 \   },
+\}
+let g:ale_linters = {
+\   'python': ['pylint'],
 \}
 
 " ctrlsf.vim
@@ -278,8 +284,9 @@ set rtp+=~/.vim/bundle/ctrlsf.vim
 " nerdcommenter
 set rtp+=~/.vim/bundle/nerdcommenter
 let g:NERDSpaceDelims = 1
-nmap <leader><space> <leader>c<space>
-vmap <leader><space> <leader>c<space>
+let g:NERDCreateDefaultMappings = 0
+nmap <leader><space> <Plug>NERDCommenterToggle
+vmap <leader><space> <Plug>NERDCommenterToggle
 
 " indentLine
 " set rtp+=~/.vim/bundle/indentLine
