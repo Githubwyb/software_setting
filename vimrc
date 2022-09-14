@@ -25,6 +25,9 @@ set backspace=indent,eol,start  " backspace mode
 set completeopt-=preview        " not open complete preview window
 " set showtabline=2             " always show tab line
 
+" ctrl y copy to system clipboard at visual mode
+vnoremap <C-y> "+y
+
 " search setting
 set hlsearch            " highlight search result
 set incsearch           " input search string, jump to result intime
@@ -47,6 +50,7 @@ set fileformats=unix,dos
 set t_Co=256
 hi CursorLine   cterm=NONE ctermbg=240
 hi CursorColumn   cterm=NONE ctermbg=240
+hi Normal cterm=NONE ctermbg=NONE
 
 " complete highlight color
 " hi Pmenu ctermbg=Yellow guibg=lightblue
@@ -167,9 +171,13 @@ set rtp+=~/.vim/bundle/nerdtree-git-plugin
 set rtp+=/opt/fzf
 set rtp+=~/.vim/bundle/fzf.vim
 " 'Ctrl + p' to find file and open in current tab
-map <c-p> :FZF<cr>
+map <c-p> :GitFiles<cr>
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :BLines<cr>
+" 'Ctrl + t' to find tags in current buffer
+map <c-t> :BTags<cr>
+" 'Ctrl + b' to find buffers
+map <leader>b :Buffers<cr>
 
 " gutentags
 set rtp+=~/.vim/bundle/vim-gutentags
@@ -185,7 +193,7 @@ let g:gutentags_add_default_project_roots = 0   " won't add default roots, only 
 " let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--c++-kinds=+px', '--c-kinds=+px']    " ctags extra args
 let g:gutentags_cache_dir = expand('~/.cache/tags')         " put tags out of project
 
-" nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :copen<cr>j<cr>
+nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :2cc<cr> :cclose<cr>
 
 " gutentags_plus
 set rtp+=~/.vim/bundle/gutentags_plus
