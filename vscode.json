@@ -11,10 +11,7 @@
     "files.trimTrailingWhitespace": true,
     "debug.console.fontSize": 16,
     "C_Cpp.clang_format_sortIncludes": true,
-    "C_Cpp.default.cppStandard": "c++20",
-    "C_Cpp.default.cStandard": "c11",
-    "C_Cpp.default.intelliSenseMode": "clang-x64",
-    "C_Cpp.clang_format_style": "{BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4, AccessModifierOffset: -4, AlignTrailingComments: true, ColumnLimit: 120}",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "window.restoreWindows": "none",
     "search.showLineNumbers": true,
     "terminal.integrated.rightClickBehavior": "default",
@@ -22,4 +19,5 @@
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": false,
     "cmake.buildBeforeRun": false,
+    "compareFolders.diffViewTitle": "full path",
 }
