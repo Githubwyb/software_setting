@@ -118,7 +118,7 @@ map <F9> :TagbarToggle<CR>
 " start Tagbar when this file types open
 " autocmd FileType c,cpp,go,js,php,py TagbarOpen
 " only add systags while c,cpp open
-" autocmd FileType c,cpp set tags+=~/.vim/systags
+autocmd FileType c,cpp set tags+=~/.vim/systags
 
 " echodoc
 set rtp+=~/.vim/bundle/echodoc.vim
@@ -171,7 +171,11 @@ set rtp+=~/.vim/bundle/nerdtree-git-plugin
 set rtp+=/opt/fzf
 set rtp+=~/.vim/bundle/fzf.vim
 " 'Ctrl + p' to find file and open in current tab
-map <c-p> :GitFiles<cr>
+if filereadable(fnamemodify('.git/config', ':p'))
+    map <c-p> :GitFiles<cr>
+else
+    map <c-p> :FZF<cr>
+endif
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :BLines<cr>
 " 'Ctrl + t' to find tags in current buffer
