@@ -202,13 +202,6 @@ nmap <leader>d yiw:GscopeFind g <C-R>"<cr> :2cc<cr> :cclose<cr>
 " gutentags_plus
 set rtp+=~/.vim/bundle/gutentags_plus
 
-" preview
-set rtp+=~/.vim/bundle/vim-preview
-" set p to open preview windows
-autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
-" set P to close preview windows
-autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
-
 " vim-trailing-whitespace
 set rtp+=~/.vim/bundle/vim-trailing-whitespace
 autocmd BufWritePre * FixWhitespace
