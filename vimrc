@@ -144,8 +144,8 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 " 注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings=1
-" 启用语法检查
-let g:ycm_show_diagnostics_ui=1
+" 禁用语法检查，使用ale的clang-tidy检查
+let g:ycm_show_diagnostics_ui=0
 " input two character to trigger complete
 let g:ycm_min_num_of_chars_for_completion=2
 " don't show preview window when input complete
@@ -264,16 +264,13 @@ let g:ale_pattern_options = {
 \   '\.json$': {
 \       'ale_enabled': 0,
 \   },
-\   '\.c[p]*$': {
-\       'ale_enabled': 0,
-\   },
-\   '\.h[p]*$': {
-\       'ale_enabled': 0,
-\   },
 \}
 let g:ale_linters = {
 \   'python': ['pylint'],
+\   'cpp': ['clangtidy'],
+\   'c': ['clangtidy'],
 \}
+let g:ale_cpp_clangtidy_extra_options = "--config-file=/home/wangyubo/.clang-tidy"
 
 " ctrlsf.vim
 set rtp+=~/.vim/bundle/ctrlsf.vim
