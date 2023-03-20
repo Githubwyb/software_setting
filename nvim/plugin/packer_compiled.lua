@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ack.vim"] = {
+    loaded = true,
+    path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/ack.vim",
+    url = "https://github.com/mileszs/ack.vim"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/auto-pairs",
@@ -107,7 +112,12 @@ _G.packer_plugins = {
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdan142/nvim-tree.lua"
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -149,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-go"] = {
+    loaded = true,
+    path = "/home/wangyubo/.local/share/nvim/site/pack/packer/start/vim-go",
+    url = "https://github.com/fatih/vim-go"
   },
   ["vim-trailing-whitespace"] = {
     loaded = true,

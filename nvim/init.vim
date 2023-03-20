@@ -7,9 +7,7 @@ set softtabstop=4       " tab input to 4 space width
 set shiftwidth=4        " change line width is 4 space
 set expandtab           " input tab, true 4 space
 set ruler               " show cursor pos status
-set cursorline          " highlight cursor line
-set cursorcolumn        " highlight cursor line
-set noswapfile                  " not build the swap file
+set cursorline          " highlight cursor line set cursorcolumn        " highlight cursor line set noswapfile                  " not build the swap file
 set backspace=indent,eol,start  " backspace mode
 set cmdheight=2         " cmd line height
 set showcmd                     " show input cmd on the right bottom
@@ -27,6 +25,10 @@ set incsearch           " input search string, jump to result intime
 set foldenable          " Enables folding.
 set foldlevel=999       " close auto folding
 set foldmethod=indent   " indent folding mode
+
+" encoding
+set fileencodings=utf-8,gb2312,gbk,gb18030
+set encoding=utf-8
 
 " color
 set t_Co=256
@@ -46,6 +48,9 @@ lua require("nvim-tree").setup({
                 \ key = "<leader>s", cb = require("nvim-tree.config").nvim_tree_callback("system_open")
             \ }
         \ }
+    \ },
+    \ git = {
+        \ ignore = false
     \ }
 \ })
 " set F10 to show or hide NERDTree
@@ -95,12 +100,12 @@ else
 endif
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :Telescope current_buffer_fuzzy_find<cr>
+" 'Ctrl + b' to find buffers
+map <c-b> :Telescope buffers<cr>
 " 'Ctrl + Shift + f' to find line in all file
 map <leader>f :Telescope live_grep<cr>
 " 'leader + t' to find tags in current buffer
 map <leader>t :Telescope tags<cr>
-" 'Ctrl + b' to find buffers
-map <leader>b :Telescope buffers<cr>
 
 " airline
 " set some flags support all situations
@@ -138,3 +143,11 @@ hi CursorColumn   cterm=NONE ctermbg=238
 hi Normal cterm=NONE ctermbg=NONE
 hi Visual ctermbg=240 guibg=240
 
+" vim-go
+nmap <leader>b :GoDebugBreakpoint<cr>
+nmap <leader>c :GoDebugContinue<cr>
+nmap <leader>st :GoDebugStop<cr>
+nmap <leader>si :GoDebugStep<cr>
+nmap <leader>so :GoDebugStepOut<cr>
+nmap <leader>n :GoDebugNext<cr>
+nmap <leader>r :GoDebugRestart<cr>
