@@ -144,6 +144,7 @@ hi Normal cterm=NONE ctermbg=NONE
 hi Visual ctermbg=240 guibg=240
 
 " vim-go
+let g:go_def_mapping_enabled = 0
 nmap <leader>b :GoDebugBreakpoint<cr>
 nmap <leader>c :GoDebugContinue<cr>
 nmap <leader>st :GoDebugStop<cr>
