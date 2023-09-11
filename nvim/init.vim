@@ -7,13 +7,15 @@ set softtabstop=4       " tab input to 4 space width
 set shiftwidth=4        " change line width is 4 space
 set expandtab           " input tab, true 4 space
 set ruler               " show cursor pos status
-set cursorline          " highlight cursor line set cursorcolumn        " highlight cursor line set noswapfile                  " not build the swap file
+set cursorline          " highlight cursor line
+set cursorcolumn        " highlight cursor column
+set noswapfile                  " not build the swap file
 set backspace=indent,eol,start  " backspace mode
 set cmdheight=2         " cmd line height
-set showcmd                     " show input cmd on the right bottom
-set autoread                    " auto read file when it was changed by other process
-set autowriteall                " auto save file when vim wants to jump to other file
-set noswapfile                  " not build the swap file
+set showcmd             " show input cmd on the right bottom
+set autoread            " auto read file when it was changed by other process
+set autowriteall        " auto save file when vim wants to jump to other file
+set noswapfile          " not build the swap file
 
 " set mouse=              " disable mouse
 vnoremap <C-y> "+y
