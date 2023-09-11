@@ -59,29 +59,46 @@ func TreeToggle()
 endfunc
 map <F10> :call TreeToggle()<cr>
 
-" coc
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-" Formatting selected code
-xmap <c-k><c-f> <Plug>(coc-format-selected)
-nmap <M-F> :CocCommand editor.action.formatDocument<cr>
+" nvim-lspconfig
+lua require('lspconfig').gopls.setup({})
+lua require('lspconfig').golangci_lint_ls.setup({})
+lua require('lspconfig').tsserver.setup({})
+lua require('lspconfig').clangd.setup({})
+lua require('lspconfig').cmake.setup({})
+lua require('lspconfig').docker_compose_language_service.setup({})
+lua require('lspconfig').eslint.setup({})
+lua require('lspconfig').html.setup({})
+lua require('lspconfig').jsonls.setup({})
+lua require('lspconfig').lua_ls.setup({})
+lua require('lspconfig').pyright.setup({})
+lua require('lspconfig').vimls.setup({})
+lua require('lspconfig').bashls.setup({})
+" goto declaration
+nmap <silent> gD <cmd>lua vim.lsp.buf.declaration()<cr>
+" goto definition
+nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
+" goto references
+nmap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
+" goto implementation
+nmap <silent> gi <cmd>lua vim.lsp.buf.implementation()<cr>
+nmap <silent> K <cmd>lua vim.lsp.buf.hover()<cr>
 " go to diagnostic
-nmap <silent> <leader>dp <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>dn <Plug>(coc-diagnostic-next)
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <silent> <leader>dp <cmd>lua vim.diagnostic.goto_prev()<cr>
+nmap <silent> <leader>dn <cmd>lua vim.diagnostic.goto_next()<cr>
+" format
+nmap <M-F> <cmd>lua vim.lsp.buf.format { async=true }<cr>
+vmap <M-F> <cmd>lua vim.lsp.buf.format { async=true }<cr>
+
+" nvim-cmp
+lua require('nvim-cmp')
+
+" nvim-lspfuzzy
+lua require('lspfuzzy').setup {}
+
+lua require('mason').setup({
+    \ automatic_installation = true,
+    \ github = { download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s" },
+\ })
 
 " Toggleterm
 " use ctrl + t to open a terminal at bottom
@@ -144,14 +161,4 @@ hi CursorLine   cterm=NONE ctermbg=238
 hi CursorColumn   cterm=NONE ctermbg=238
 hi Normal cterm=NONE ctermbg=NONE
 hi Visual ctermbg=240 guibg=240
-
-" vim-go
-let g:go_def_mapping_enabled = 0
-nmap <leader>b :GoDebugBreakpoint<cr>
-nmap <leader>c :GoDebugContinue<cr>
-nmap <leader>st :GoDebugStop<cr>
-nmap <leader>si :GoDebugStep<cr>
-nmap <leader>so :GoDebugStepOut<cr>
-nmap <leader>n :GoDebugNext<cr>
-nmap <leader>r :GoDebugRestart<cr>
 

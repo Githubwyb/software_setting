@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end}
-    use 'neoclide/coc.nvim'
     use 'scrooloose/nerdcommenter'
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
@@ -23,6 +22,23 @@ return require('packer').startup(function(use)
     use 'preservim/tagbar'
     use 'sainnhe/edge'
     use 'mileszs/ack.vim'
-    use 'fatih/vim-go'
-    use 'ludovicchabant/vim-gutentags'
+    use 'williamboman/mason.nvim'
+    use 'neovim/nvim-lspconfig'
+    use {
+        'ojroques/nvim-lspfuzzy',
+        requires = { { 'junegunn/fzf' }, {'junegunn/fzf.vim'} },
+    }
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-cmdline' },
+            { 'hrsh7th/cmp-vsnip' },
+            { 'hrsh7th/vim-vsnip' },
+        },
+    }
+    use 'rafamadriz/friendly-snippets'
+    use 'onsails/lspkind-nvim'
 end)
