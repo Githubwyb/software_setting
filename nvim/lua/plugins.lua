@@ -24,4 +24,5 @@ return require('packer').startup(function(use)
     use 'sainnhe/edge'
     use 'mileszs/ack.vim'
     use 'fatih/vim-go'
+    use 'ludovicchabant/vim-gutentags'
 end)

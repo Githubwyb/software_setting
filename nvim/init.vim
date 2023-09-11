@@ -13,6 +13,7 @@ set cmdheight=2         " cmd line height
 set showcmd                     " show input cmd on the right bottom
 set autoread                    " auto read file when it was changed by other process
 set autowriteall                " auto save file when vim wants to jump to other file
+set noswapfile                  " not build the swap file
 
 " set mouse=              " disable mouse
 vnoremap <C-y> "+y
@@ -42,13 +43,6 @@ map <F9> :TagbarToggle<CR>
 " nvim-tree
 lua require("nvim-tree").setup({
     \ sort_by = "case_sensitive",
-    \ view = {
-        \ mappings = {
-            \ list = {
-                \ key = "<leader>s", cb = require("nvim-tree.config").nvim_tree_callback("system_open")
-            \ }
-        \ }
-    \ },
     \ git = {
         \ ignore = false
     \ }
@@ -102,10 +96,16 @@ endif
 map <c-f> :Telescope current_buffer_fuzzy_find<cr>
 " 'Ctrl + b' to find buffers
 map <c-b> :Telescope buffers<cr>
-" 'Ctrl + Shift + f' to find line in all file
+" 'leader + f' to find line in all file
 map <leader>f :Telescope live_grep<cr>
 " 'leader + t' to find tags in current buffer
 map <leader>t :Telescope tags<cr>
+
+" ack
+" 'leader + Shift + F' to find text under cursor in all file use ack
+nmap <leader>F yiw:Ack!<space>-i<space><C-R>"
+" search selected text
+vmap <leader>F y:Ack!<space>-i<space><C-R>"
 
 " airline
 " set some flags support all situations
@@ -152,3 +152,4 @@ nmap <leader>si :GoDebugStep<cr>
 nmap <leader>so :GoDebugStepOut<cr>
 nmap <leader>n :GoDebugNext<cr>
 nmap <leader>r :GoDebugRestart<cr>
+
