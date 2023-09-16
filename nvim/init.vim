@@ -81,6 +81,8 @@ nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
 nmap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
 " goto implementation
 nmap <silent> gi <cmd>lua vim.lsp.buf.implementation()<cr>
+" get code action
+nmap <silent> gc <cmd>lua vim.lsp.buf.code_action()<cr>
 nmap <silent> K <cmd>lua vim.lsp.buf.hover()<cr>
 " go to diagnostic
 nmap <silent> <leader>dp <cmd>lua vim.diagnostic.goto_prev()<cr>
@@ -113,8 +115,8 @@ else
 endif
 " 'Ctrl + f' to find line in current buffer
 map <c-f> :Telescope current_buffer_fuzzy_find<cr>
-" 'Ctrl + b' to find buffers
-map <c-b> :Telescope buffers<cr>
+" 'leader + b' to find buffers
+map <leader>b :Telescope buffers<cr>
 " 'leader + f' to find line in all file
 map <leader>f :Telescope live_grep<cr>
 " 'leader + t' to find tags in current buffer

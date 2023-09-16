@@ -24,6 +24,10 @@ cmp.setup({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace,
         }),
+        ["<TAB>"] = cmp.mapping.confirm({
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace,
+        }),
     },
     formatting = {
         format = lspkind.cmp_format({
