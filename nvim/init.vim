@@ -7,8 +7,6 @@ set softtabstop=4       " tab input to 4 space width
 set shiftwidth=4        " change line width is 4 space
 set expandtab           " input tab, true 4 space
 set ruler               " show cursor pos status
-set cursorline          " highlight cursor line
-set cursorcolumn        " highlight cursor column
 set noswapfile                  " not build the swap file
 set backspace=indent,eol,start  " backspace mode
 set cmdheight=2         " cmd line height
@@ -163,8 +161,10 @@ else
     let g:edge_style = 'aura'
     let g:edge_better_performance = 1
     colorscheme edge
+    set cursorline          " highlight cursor line
+    set cursorcolumn        " highlight cursor column
+    hi CursorLine   cterm=NONE ctermbg=238
+    hi CursorColumn   cterm=NONE ctermbg=238
     hi Normal cterm=NONE ctermbg=NONE
     hi Visual ctermbg=240 guibg=240
 endif
-hi CursorLine   cterm=NONE ctermbg=238
-hi CursorColumn   cterm=NONE ctermbg=238
