@@ -41,6 +41,7 @@ set t_Co=256
 let g:tagbar_width=70
 " set F9 to show or hide tlist
 map <F9> :TagbarToggle<CR>
+map <c-M-b> :TagbarToggle<CR>
 
 " nvim-tree
 lua require("nvim-tree").setup({
@@ -162,8 +163,8 @@ else
     let g:edge_style = 'aura'
     let g:edge_better_performance = 1
     colorscheme edge
-    hi CursorLine   cterm=NONE ctermbg=238
-    hi CursorColumn   cterm=NONE ctermbg=238
     hi Normal cterm=NONE ctermbg=NONE
     hi Visual ctermbg=240 guibg=240
 endif
+hi CursorLine   cterm=NONE ctermbg=238
+hi CursorColumn   cterm=NONE ctermbg=238
