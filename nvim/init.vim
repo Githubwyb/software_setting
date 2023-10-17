@@ -156,11 +156,14 @@ autocmd BufWritePre * FixWhitespace
 lua require('gitsigns').setup { current_line_blame = true, current_line_blame_formatter = '<author> [<author_time:%Y-%m-%d>] * <summary>' }
 
 " edge
-let g:edge_style = 'aura'
-let g:edge_better_performance = 1
-colorscheme edge
-hi CursorLine   cterm=NONE ctermbg=238
-hi CursorColumn   cterm=NONE ctermbg=238
-hi Normal cterm=NONE ctermbg=NONE
-hi Visual ctermbg=240 guibg=240
-
+if exists('g:vscode')
+    " vscode
+else
+    let g:edge_style = 'aura'
+    let g:edge_better_performance = 1
+    colorscheme edge
+    hi CursorLine   cterm=NONE ctermbg=238
+    hi CursorColumn   cterm=NONE ctermbg=238
+    hi Normal cterm=NONE ctermbg=NONE
+    hi Visual ctermbg=240 guibg=240
+endif
