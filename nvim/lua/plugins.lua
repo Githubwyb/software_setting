@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'dyng/ctrlsf.vim'
     use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-fugitive'
     use 'vim-airline/vim-airline'
@@ -22,6 +23,7 @@ return require('packer').startup(function(use)
     use 'preservim/tagbar'
     use 'sainnhe/edge'
     use 'mileszs/ack.vim'
+    use 'ray-x/go.nvim'
     use 'williamboman/mason.nvim'
     use 'neovim/nvim-lspconfig'
     use {

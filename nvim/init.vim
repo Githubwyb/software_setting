@@ -90,6 +90,9 @@ nmap <silent> <leader>dn <cmd>lua vim.diagnostic.goto_next()<cr>
 nmap <M-F> <cmd>lua vim.lsp.buf.format { async=true }<cr>
 vmap <M-F> <cmd>lua vim.lsp.buf.format { async=true }<cr>
 
+" ray-x/go.nvim
+lua require('go-nvim')
+
 " nvim-cmp
 lua require('nvim-cmp')
 
