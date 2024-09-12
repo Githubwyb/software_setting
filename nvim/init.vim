@@ -61,7 +61,7 @@ map <F10> :call TreeToggle()<cr>
 " nvim-lspconfig
 lua require('lspconfig').gopls.setup({})
 lua require('lspconfig').golangci_lint_ls.setup({})
-lua require('lspconfig').tsserver.setup({})
+lua require('lspconfig').ts_ls.setup({})
 lua require('lspconfig').clangd.setup({})
 lua require('lspconfig').cmake.setup({})
 lua require('lspconfig').docker_compose_language_service.setup({})
@@ -161,13 +161,18 @@ lua require('gitsigns').setup { current_line_blame = true, current_line_blame_fo
 if exists('g:vscode')
     " vscode
 else
-    let g:edge_style = 'aura'
+    " let g:edge_style = 'aura'
+    let g:edge_style = 'neon'
     let g:edge_better_performance = 1
-    colorscheme edge
+    let g:edge_transparent_background = 1
     set cursorline          " highlight cursor line
     set cursorcolumn        " highlight cursor column
-    hi CursorLine   cterm=NONE ctermbg=238
-    hi CursorColumn   cterm=NONE ctermbg=238
-    hi Normal cterm=NONE ctermbg=NONE
-    hi Visual ctermbg=240 guibg=240
+    " bg1 curor line
+    " bg3 visual
+    let g:edge_colors_override = {
+        \ 'bg1': ["#585858", "239"],
+        \ 'bg3': ["#666666", "239"],
+    \ }
+    colorscheme edge
 endif
+
