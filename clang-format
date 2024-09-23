@@ -1,7 +1,16 @@
 BasedOnStyle: Google
 IndentWidth: 4
 TabWidth: 4
+---
+Language: Cpp
 SortIncludes: true
 AccessModifierOffset: -4
 AlignTrailingComments: true
-ColumnLimit: 120
+AlignConsecutiveDeclarations: false
+ColumnLimit: 100
+AllowShortFunctionsOnASingleLine: Empty
+---
+Language: JavaScript
+Cpp11BracedListStyle: false
+AlignAfterOpenBracket: DontAlign
+ColumnLimit: 100
