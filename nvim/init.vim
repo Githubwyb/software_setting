@@ -58,20 +58,6 @@ func TreeToggle()
 endfunc
 map <F10> :call TreeToggle()<cr>
 
-" nvim-lspconfig
-lua require('lspconfig').gopls.setup({})
-lua require('lspconfig').golangci_lint_ls.setup({})
-lua require('lspconfig').ts_ls.setup({})
-lua require('lspconfig').clangd.setup({})
-lua require('lspconfig').cmake.setup({})
-lua require('lspconfig').docker_compose_language_service.setup({})
-lua require('lspconfig').eslint.setup({})
-lua require('lspconfig').html.setup({})
-lua require('lspconfig').jsonls.setup({})
-lua require('lspconfig').lua_ls.setup({})
-lua require('lspconfig').pyright.setup({})
-lua require('lspconfig').vimls.setup({})
-lua require('lspconfig').bashls.setup({})
 " goto declaration
 nmap <silent> gD <cmd>lua vim.lsp.buf.declaration()<cr>
 " goto definition
@@ -101,7 +87,6 @@ lua require('lspfuzzy').setup {}
 
 lua require('mason').setup({
     \ automatic_installation = true,
-    \ github = { download_url_template = "https://ghproxy.com/https://github.com/%s/releases/download/%s/%s" },
 \ })
 
 " Toggleterm
